@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabel Mempunyai Hak</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f6ff;
+            text-align: center;
+        }
+        h2 {
+            color: #2a4d7a;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px gray;
+        }
+        th {
+            background-color: #4a76b8;
+            color: white;
+            padding: 10px;
+        }
+        td {
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #e9efff;
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 200px;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4a76b8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #335a91;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Input Data Hak</h2>
+
+<input type="text" id="nama" placeholder="Masukkan nama"><br>
+<input type="number" id="umur" placeholder="Masukkan umur"><br>
+<button onclick="tambahData()">Tambah ke Tabel</button>
+
+<table>
+    <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Umur</th>
+        <th>Keterangan Hak</th>
+    </tr>
+    <tbody id="tabelData"></tbody>
+</table>
+
+<script>
+    let nomor = 1;
+    function tambahData() {
+        let nama = document.getElementById("nama").value;
+        let umur = document.getElementById("umur").value;
+        let hak = umur >= 17 ? "✅ Mempunyai Hak" : "❌ Belum Mempunyai Hak";
+
+        if (nama === "" || umur === "") {
+            alert("⚠️ Nama dan umur harus diisi!");
+            return;
+        }
+
+        let tabel = document.getElementById("tabelData");
+        let baris = `<tr>
+                        <td>${nomor}</td>
+                        <td>${nama}</td>
+                        <td>${umur}</td>
+                        <td>${hak}</td>
+                     </tr>`;
+        tabel.innerHTML += baris;
+        nomor++;
+
+        document.getElementById("nama").value = "";
+        document.getElementById("umur").value = "";
+    }
+</script>
+
+</body>
+</html>
+
